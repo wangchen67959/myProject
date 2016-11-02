@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<mapper namespace="com.test.dao.TestDao">
+<resultMap id="UserResultMap" type="com.test.entity.User">
+	<id column="id" jdbcType="INTEGER" property="id" />
+	<result column="userName" jdbcType="VARCHAR" property="name" />
+	<result column="userAge" jdbcType="INTEGER" property="age" />
+	<result column="userAddress" jdbcType="VARCHAR" property="address" />
+</resultMap>
+
+<select id="testQuery"  resultMap="UserResultMap">
+	SELECT id,name as userName, age as userAge, address as userAddress FROM user
+</select>
+<insert id="inserV"   parameterType="java.util.Map">
+	insert into user(id, name, age, address) values(#{id},#{name},#{age},#{birthdate})
+</insert>
+</mapper>
